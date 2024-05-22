@@ -1,0 +1,95 @@
+// Importerar variabler.
+@import '../../variables';
+
+// Information om sidan.
+.info, .table-container {
+    
+    p {
+        text-align: left;
+        margin: 0 2rem;
+    }
+}
+
+// Container för ramschema.
+.container {
+    width: 100%;
+
+    // Formulär: filtrering.
+    .form {
+        text-align: center;
+        padding: 2rem 0;
+        letter-spacing: 1px;
+
+        label {
+            font-size: 20px;
+        }
+
+        #searchInput, #subject {
+            width: 50%;
+            border: 2px solid $greige;
+            border-radius: 5px;
+            padding: 7px 7px;
+            margin: 10px 0 1rem 0;
+        }
+
+        @media (min-width: 769px) {
+            #searchInput, #subject  {
+                width: 25%;
+            }
+        }
+
+        @media (min-width: 1921px) {
+            #searchInput, #subject  {
+                width: 15%;
+            }
+        }
+    }
+
+    // Container för tabell.
+    .table-container {
+        overflow-x: auto;
+        margin-bottom: 3rem;
+
+        // Kurstabell.
+        .table {
+            margin: 2rem auto;
+            border: 2px solid $greige;
+            border-radius: 5px;
+
+            th,
+            td {
+                padding: 10px;
+                text-align: left;
+            }
+
+            thead {
+                cursor: pointer;
+                background-color: rgba($greige, 75%);
+                text-shadow: 2px 1px 2px $white;
+            }
+
+            tbody tr td {
+                justify-content: center;
+                font-size: 14px;
+            }
+
+            tr:nth-child(even) {
+                background-color: rgba($greige, 50%);
+            }
+        }
+    }
+}
+
+// Mediaquery för större skärmar.
+@media (min-width: 769px) {
+
+    // Information om sidan.
+    .info,
+    .table-container {
+
+        p {
+            text-align: center;
+            margin: 0 2rem;
+        }
+    }
+}

@@ -14,12 +14,14 @@ body {
     display: flex;
     flex-direction: column;
     font: 100% $font-stack;
-    background-color: rgba($breige, 5%);
+    background-color: rgba($greige, 5%);
 
     // Rubriker.
     h1 {
+        text-align: center;
         padding-top: 2rem;
-        font-size: 3em;
+        margin-bottom: 2rem;
+        font-size: 2.5em;
     }
 
     h2 {
