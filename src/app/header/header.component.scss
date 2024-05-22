@@ -1,0 +1,65 @@
+// Importerar variabler.
+@import '../../variables';
+
+// Header.
+header {
+    height: 150px;
+    width: 100%;
+
+    // Logotyp.
+    img {
+        height: 60%;
+        width: auto;
+        padding: 1rem 0 0 1rem;
+    }
+
+    // Navigeringsmeny.
+    nav ul {
+        list-style: none;
+        border-top: 2px solid $black;
+        margin: 1rem 0 2rem 0;
+        text-align: center;
+        padding: 0.5rem;
+    }
+
+    // Li-element i nav.
+    nav ul li {
+        display: inline;
+        font-size: 20px;
+    }
+
+    // Länkar i nav.
+    nav ul li a {
+        text-decoration: none;
+        padding: 0.5rem;
+    }
+
+    // Hover-effekt för länkar.
+    nav ul li a:hover {
+        text-decoration: underline;
+    }
+
+    // Aktiv sida.
+    .currentPage {
+        text-decoration: none;
+    }
+}
+
+// Mediaquery för större skärmar.
+@media (min-width: 769px) {
+
+    header {
+        display: flex;
+        justify-content: space-between;
+
+        img {
+            height: 60%;
+            width: auto;
+            padding: 1rem 0 0 1rem;
+        }
+
+        nav ul {
+            border-top: none;
+        }
+    }
+}

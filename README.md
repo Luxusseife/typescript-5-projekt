@@ -1,6 +1,26 @@
-# HassleHogskola
+# Moment 5, _Projekt_
+
+Den här README-filen har skapats för att beskriva momentets syfte och hur projektlösningen är konstruerad.
+
+## Momentets syfte
+
+- Skapa en webbplats med Angular som ramverk och TypeScript som programmeringsspråk.
+- Kunna läsa in externt data, behandla detta och presentera på skärm.
+- Kunna använda tidigare moment i kursen i en större sammanhängande webbplats.
+- Presentera en projektrapport beskrivande lösningen. 
+
+## Konstruktion
+
+... 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
+
+## Utveckling
+Nedan följer en instruktion (på engelska) för hur skapandet och utvecklingen av ett Angular-projekt kan göras. Det förutsätter att Angular är installerat på datorn med det globala kommandot _npm install -g @angular/cli_. 
+
+### Creating a project 
+
+Run `ng new project-name` to create your Angular-project.
 
 ## Development server
 

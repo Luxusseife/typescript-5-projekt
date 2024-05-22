@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+// Importerar variabler.
+@import 'variables';
+
+// Normalisering.
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// Body.
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font: 100% $font-stack;
+    background-color: rgba($breige, 5%);
+
+    // Rubriker.
+    h1 {
+        padding-top: 2rem;
+        font-size: 3em;
+    }
+
+    h2 {
+        padding-top: 1rem;
+        font-size: 2em;
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+}
