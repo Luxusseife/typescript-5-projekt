@@ -2,17 +2,18 @@
 @import '../../variables';
 
 // Information om sidan.
-.info, .table-container {
-    
+.info,
+.courses-count {
+
     p {
-        text-align: left;
+        text-align: center;
         margin: 0 2rem;
     }
 }
 
 // Container för ramschema.
 .container {
-    width: 100%;
+    max-width: 100%;
 
     // Formulär: filtrering.
     .form {
@@ -24,7 +25,8 @@
             font-size: 20px;
         }
 
-        #searchInput, #subject {
+        #searchInput,
+        #subject {
             width: 50%;
             border: 2px solid $greige;
             border-radius: 5px;
@@ -33,28 +35,98 @@
         }
 
         @media (min-width: 769px) {
-            #searchInput, #subject  {
+
+            #searchInput,
+            #subject {
                 width: 25%;
             }
         }
 
         @media (min-width: 1921px) {
-            #searchInput, #subject  {
+
+            #searchInput,
+            #subject {
                 width: 15%;
             }
         }
     }
 
-    // Container för tabell.
-    .table-container {
-        overflow-x: auto;
+    // Kurstabell för mobil/tablet.
+    .table-mobile {
         margin-bottom: 3rem;
+        margin: 2rem auto;
+        border: 2px solid $greige;
+        border-radius: 5px;
 
-        // Kurstabell.
-        .table {
+        a {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        th,
+        td {
+            padding: 5px;
+            text-align: left;
+            font-size: 14px;
+            max-width: 150px;
+        } 
+
+        thead {
+            background-color: rgba($greige, 75%);
+            font-size: 15px;
+
+            #code,
+            #name,
+            #points,
+            #subject {
+                cursor: pointer;
+            }
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba($greige, 50%);
+        }
+
+        .fa-star {
+            cursor: pointer;
+            color: $yellow;
+            padding-left: 0.75rem;
+        }
+
+        .fa-regular {
+            color: $black;
+        }
+    }
+
+    // Kurstabell för mobil/tablet.
+    .table-desktop {
+        display: none;
+    }
+}
+
+// Mediaquery för större skärmar.
+@media (min-width: 769px) {
+
+    .container {
+
+        // Kurstabell för mobil/tablet.
+        .table-mobile {
+            display: none;
+        }
+
+        // Kurstabell för desktop.
+        .table-desktop {
+            display: block;
+            overflow-x: auto;
+            margin-bottom: 3rem;
             margin: 2rem auto;
             border: 2px solid $greige;
             border-radius: 5px;
+
+            a {
+                cursor: pointer;
+                text-decoration: none;
+            }
 
             th,
             td {
@@ -63,13 +135,18 @@
             }
 
             thead {
-                cursor: pointer;
                 background-color: rgba($greige, 75%);
                 text-shadow: 2px 1px 2px $white;
+
+                #code,
+                #name,
+                #points,
+                #subject {
+                    cursor: pointer;
+                }
             }
 
-            tbody tr td {
-                justify-content: center;
+            #course-info tr td {
                 font-size: 14px;
             }
 
@@ -77,15 +154,6 @@
                 background-color: rgba($greige, 50%);
             }
         }
-    }
-}
-
-// Mediaquery för större skärmar.
-@media (min-width: 769px) {
-
-    // Information om sidan.
-    .info,
-    .table-container {
 
         p {
             text-align: center;

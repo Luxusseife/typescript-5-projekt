@@ -3,12 +3,21 @@
 
 // Footer.
 footer {
-    height: 200px;
+    height: 300px;
     width: 100%;
     bottom: 0;
-    background-color: $greige;
+    background-color: darken($greige, 10%);
     text-align: left;
     color: $black;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 2rem;
     line-height: 1.6;
+    color: $white;
+
+    .fa-solid {
+        padding-right: 0.5rem;
+    }
+
+    .fa-brands {
+        padding: 1.5rem 1rem 0 0;
+    }
 }

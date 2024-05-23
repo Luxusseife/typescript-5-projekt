@@ -2,8 +2,8 @@
 
 <div class="info">
     <p>
-        Här visas alla våra tillgängliga och sökbara kurser. Hittar du några intressanta kurser som du 
-        önskar lägga i ett egenkomponerat ramschema, klicka på lägg till. 
+        Här visas alla våra tillgängliga och sökbara kurser. Du har möjlighet att skapa ditt egenkomponerade ramschema
+        genom att spara de kurser du är intresserad av.
     </p>
 </div>
 
@@ -11,36 +11,71 @@
     <div class="form">
         <label for="searchInput" id="label-filtrate">Filtrera kurser:</label>
         <br>
-        <input type="text" id="searchInput" placeholder="Skriv kurskod eller kursnamn" [(ngModel)]="filterValue" (input)="applyFilter()">
+        <input type="text" id="searchInput" placeholder="Skriv kurskod eller kursnamn" [(ngModel)]="filterValue"
+            (input)="applyFilter()">
         <br>
         <label for="subject" id="label-subject">Filtrera på ämne:</label>
         <br>
-        <select name="subject" id="subject" placeholder="Välj ämne">
-            <option value=""> </option>
+        <select name="subject" id="subject" [(ngModel)]="subjectFilter"
+            (change)="filterCoursesBySubject(subjectFilter)">
+            <option value="">Alla ämnen</option>
             <option *ngFor="let subject of subjects" [value]="subject">{{ subject }}</option>
         </select>
     </div>
 
-    <div class="table-container">
-        <p>Totalt antal kurser:</p>
-        <p>Utifrån aktuell filtrering visas:</p>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th id="code" (click)="sortByCode()">Kurskod</th>
-                    <th id="name" (click)="sortByName()">Kursnamn</th>
-                    <th id="points" (click)="sortByPoints()">Poäng</th>
-                    <th id="subject" (click)="sortBySubject()">Ämne</th>
-                </tr>
-            </thead>
-            <tbody id="course-info">
-                <tr *ngFor="let course of filteredCourseList">
-                    <td>{{ course.courseCode.toUpperCase() }}</td>
-                    <td>{{ course.courseName }}</td>
-                    <td>{{ course.points }}</td>
-                    <td>{{ course.subject }}</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="courses-count">
+        <p>Totalt antal kurser: <strong>{{ totalCourses }}</strong></p>
+        <br>
+        <p>Utifrån aktuell filtrering visas: <strong>{{ filteredCourseList.length }}</strong> kurser</p>
     </div>
+
+    <!-- Tabell för mobil -->
+    <table class="table-mobile">
+        <thead>
+            <tr>
+                <th id="name">Kursnamn</th>
+                <th id="points">Poäng</th>
+                <th id="syllabus">Kursplan</th>
+                <th id="save">Spara</th>
+            </tr>
+        </thead>
+        <tbody id="course-info-mobile">
+            <tr *ngFor="let course of filteredCourseList">
+                <td>{{ course.courseName }}</td>
+                <td>{{ course.points }}</td>
+                <td><a href="{{ course.syllabus }}" target="_blank" alt="Länk till kursplan">Kursplan</a></td>
+                <td>
+                    <i class="fa-regular fa-star" *ngIf="!isStarred" (click)="toggleStar()"></i>
+                    <i class="fa-solid fa-star" *ngIf="isStarred" (click)="toggleStar()"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Tabell för desktop -->
+    <table class="table-desktop">
+        <thead>
+            <tr>
+                <th id="code" (click)="sortByCode()">Kurskod</th>
+                <th id="name" (click)="sortByName()">Kursnamn</th>
+                <th id="points" (click)="sortByPoints()">Poäng</th>
+                <th id="subject" (click)="sortBySubject()">Ämne</th>
+                <th id="syllabus">Kursplan</th>
+                <th id="save">Spara</th>
+            </tr>
+        </thead>
+        <tbody id="course-info">
+            <tr *ngFor="let course of filteredCourseList">
+                <td>{{ course.courseCode.toUpperCase() }}</td>
+                <td>{{ course.courseName }}</td>
+                <td>{{ course.points }}</td>
+                <td>{{ course.subject }}</td>
+                <td><a href="{{ course.syllabus }}" target="_blank" alt="Länk till kursplan">Kursplan</a></td>
+                <td>
+                    <i class="fa-regular fa-star" *ngIf="!isStarred" (click)="toggleStar()"></i>
+                    <i class="fa-solid fa-star" *ngIf="isStarred" (click)="toggleStar()"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

@@ -13,23 +13,29 @@ import { CoursedataService } from '../services/coursedata.service';
 })
 export class CoursesComponent {
   
-  // Egenskaper.
+  // Egenskaper för listor och filter.
   courseList: Course[] = [];
   filteredCourseList: Course[] = [];
   filterValue: string = "";
   ascending: boolean = true;
-  subjects: string[] = []; // Array to hold unique subjects
+  subjects: string[] = [];
+  courses: Course[] = [];
+  totalCourses: number = 0;
+  subjectFilter: string = "";
+  isStarred: boolean = false;
 
   // Konstruktor.
   constructor(private coursedataService: CoursedataService) { }
 
-  // Initialisering.
+  // Initialisering och hämtning av kursdata.
   ngOnInit() {
     this.coursedataService.getCourses().subscribe(data => {
       this.courseList = data;
       this.filteredCourseList = data;
       this.extractSubjects(data);
-    })
+      this.courses = data;
+      this.totalCourses = this.courses.length;
+    });
   }
 
   // Filtrering av kursnamn och/eller kurskod.
@@ -38,6 +44,18 @@ export class CoursesComponent {
       course.courseName.toLowerCase().includes(this.filterValue.toLowerCase()) ||
       course.courseCode.toLowerCase().includes(this.filterValue.toLowerCase())
     );
+  }
+
+  // Extrahera unika ämnen från json-filen.
+  extractSubjects(courses: Course[]): void {
+    this.subjects = [...new Set(courses.map(course => course.subject))];
+  }
+
+  // Filtrering av kurser efter valt ämne.
+  filterCoursesBySubject(subject: string = ''): void {
+    this.filteredCourseList = subject
+      ? this.courseList.filter(course => course.subject === subject)
+      : this.courseList;
   }
 
   // Sortering av kurskod i växlande fallande/stigande ordning.
@@ -80,8 +98,7 @@ export class CoursesComponent {
     this.ascending = !this.ascending;
   }
 
-  // Extrahera unika ämnen från json-filen.
-  extractSubjects(courses: any[]): void {
-    this.subjects = [...new Set(courses.map(course => course.subject))];
+  toggleStar(): void {
+    this.isStarred = !this.isStarred;
   }
 }
