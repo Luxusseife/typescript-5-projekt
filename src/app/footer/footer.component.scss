@@ -5,19 +5,44 @@
 footer {
     height: 300px;
     width: 100%;
-    bottom: 0;
     background-color: darken($greige, 10%);
-    text-align: left;
-    color: $black;
-    padding: 1rem 1rem 1rem 2rem;
-    line-height: 1.6;
     color: $white;
-
+    text-align: left;
+    line-height: 1.6;
+    padding: 1rem 1rem 1rem 2rem;
+    
     .fa-solid {
         padding-right: 0.5rem;
     }
 
     .fa-brands {
         padding: 1.5rem 1rem 0 0;
+        color: $white;
+
+        &:hover {
+            color: $yellow;
+        }
+    }
+
+    // Logotyp.
+    img {
+        height: 100px;
+        width: auto;
+        padding: 1rem 0 0 1rem;
+        justify-self: center;
+    }
+}
+
+// Mediaquery för större skärmar.
+@media (min-width: 769px) {
+
+    footer {
+        position: relative;
+
+        img {
+            position: absolute;
+            right: 3rem;
+            bottom: 3rem;
+        }
     }
 }

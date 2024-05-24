@@ -1,9 +1,10 @@
 <header>
-    <img [src]="logo" alt="Hässle Högskolas logotyp">
+    <a href="/home"><img [src]="logo" alt="Hässle Högskolas logotyp"></a>
 
     <nav>
         <ul>
-            <li><a routerLink="/home" routerLinkActive="currentPage">Startsida</a></li>
+            <li><a routerLink="/home" routerLinkActive="currentPage">Hem</a></li>
+            <li><a routerLink="/info" routerLinkActive="currentPage">Information</a></li>
             <li><a routerLink="/courses" routerLinkActive="currentPage">Kurser</a></li>
             <li><a routerLink="/schedule" routerLinkActive="currentPage">Ramschema</a></li>
         </ul>

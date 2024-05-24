@@ -28,7 +28,7 @@
         #searchInput,
         #subject {
             width: 50%;
-            border: 2px solid $greige;
+            border: 2px solid $green;
             border-radius: 5px;
             padding: 7px 7px;
             margin: 10px 0 1rem 0;
@@ -55,7 +55,7 @@
     .table-mobile {
         margin-bottom: 3rem;
         margin: 2rem auto;
-        border: 2px solid $greige;
+        border: 2px solid $green;
         border-radius: 5px;
 
         a {
@@ -72,7 +72,7 @@
         } 
 
         thead {
-            background-color: rgba($greige, 75%);
+            background-color: rgba($green, 75%);
             font-size: 15px;
 
             #code,
@@ -84,7 +84,7 @@
         }
 
         tr:nth-child(even) {
-            background-color: rgba($greige, 50%);
+            background-color: rgba($green, 50%);
         }
 
         .fa-star {
@@ -120,7 +120,7 @@
             overflow-x: auto;
             margin-bottom: 3rem;
             margin: 2rem auto;
-            border: 2px solid $greige;
+            border: 2px solid $green;
             border-radius: 5px;
 
             a {
@@ -135,7 +135,7 @@
             }
 
             thead {
-                background-color: rgba($greige, 75%);
+                background-color: rgba($green, 75%);
                 text-shadow: 2px 1px 2px $white;
 
                 #code,
@@ -151,7 +151,17 @@
             }
 
             tr:nth-child(even) {
-                background-color: rgba($greige, 50%);
+                background-color: rgba($green, 50%);
+            }
+
+            .fa-star {
+                cursor: pointer;
+                color: $yellow;
+                padding-left: 0.75rem;
+            }
+    
+            .fa-regular {
+                color: $black;
             }
         }
 

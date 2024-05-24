@@ -9,5 +9,5 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  logo: string = "assets/images/logo.png";
+  logo: string = "assets/images/logoLight.png";
 }
