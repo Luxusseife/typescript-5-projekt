@@ -30,7 +30,7 @@ export class CoursesComponent {
   // Initialisering och hämtning av kursdata.
   ngOnInit() {
     this.coursedataService.getCourses().subscribe(data => {
-      this.courseList = data;
+      this.courseList = data.map(course => ({ ...course, isStarred: false }));
       this.filteredCourseList = data;
       this.extractSubjects(data);
       this.courses = data;
@@ -98,7 +98,8 @@ export class CoursesComponent {
     this.ascending = !this.ascending;
   }
 
-  toggleStar(): void {
-    this.isStarred = !this.isStarred;
+  // Växla status (sparad favorit, ej sparad favorit) för en kurs.
+  toggleStar(course: Course): void {
+    course.isStarred = !course.isStarred;
   }
 }

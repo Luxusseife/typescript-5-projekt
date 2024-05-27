@@ -33,8 +33,8 @@
     <table class="table-mobile">
         <thead>
             <tr>
-                <th id="name">Kursnamn</th>
-                <th id="points">Poäng</th>
+                <th id="name" (click)="sortByName()">Kursnamn</th>
+                <th id="points" (click)="sortByPoints()">Poäng</th>
                 <th id="syllabus">Kursplan</th>
                 <th id="save">Spara</th>
             </tr>
@@ -45,8 +45,8 @@
                 <td>{{ course.points }}</td>
                 <td><a href="{{ course.syllabus }}" target="_blank" alt="Länk till kursplan">Kursplan</a></td>
                 <td>
-                    <i class="fa-regular fa-star" *ngIf="!isStarred" (click)="toggleStar()"></i>
-                    <i class="fa-solid fa-star" *ngIf="isStarred" (click)="toggleStar()"></i>
+                    <i class="fa-regular fa-star fa-lg" *ngIf="!course.isStarred" (click)="toggleStar(course)"></i>
+                    <i class="fa-solid fa-star fa-lg" *ngIf="course.isStarred" (click)="toggleStar(course)"></i>
                 </td>
             </tr>
         </tbody>
@@ -72,9 +72,9 @@
                 <td>{{ course.subject }}</td>
                 <td><a href="{{ course.syllabus }}" target="_blank" alt="Länk till kursplan">Kursplan</a></td>
                 <td>
-                    <i class="fa-regular fa-star" *ngIf="!isStarred" (click)="toggleStar()"></i>
-                    <i class="fa-solid fa-star" *ngIf="isStarred" (click)="toggleStar()"></i>
-                </td>
+                    <i class="fa-regular fa-star fa-lg" *ngIf="!course.isStarred" (click)="toggleStar(course)"></i>
+                        <i class="fa-solid fa-star fa-lg" *ngIf="course.isStarred" (click)="toggleStar(course)"></i>
+                    </td>
             </tr>
         </tbody>
     </table>

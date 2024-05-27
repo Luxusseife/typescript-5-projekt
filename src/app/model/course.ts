@@ -7,5 +7,6 @@ export interface Course {
     points: number;
     institutionCode: string;
     subject: string;
-    syllabus: string;    
+    syllabus: string;  
+    isStarred?: boolean;  
 }
