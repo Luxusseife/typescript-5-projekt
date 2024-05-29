@@ -16,53 +16,87 @@ header {
     // Navigeringsmeny.
     nav ul {
         list-style: none;
-        border-top: 2px solid $greige;
+        border-top: 2px solid rgba($green, 75%);
+        border-bottom: 2px solid rgba($green, 75%);
         margin: 1rem 0 2rem 0;
         text-align: center;
-        padding: 0.5rem;
-    }
+        padding: 0.6rem 0.4rem;
+        max-width: 100%;
+        background-color: rgba($green, 10%);
+        
 
-    // Li-element i nav.
-    nav ul li {
-        display: inline;
-        font-size: 20px;
-    }
+        // Li-element i nav.
+        li {
+            display: inline;
+            font-size: 20px;
+        }
 
-    // Länkar i nav.
-    nav ul li a {
-        text-decoration: none;
-        padding: 0.5rem;
-    }
+        // Länkar i nav.
+        a {
+            text-decoration: none;
+            padding: 0.5rem;
+            color: inherit;
 
-    // Hover-effekt för länkar.
-    nav ul li a:hover {
-        text-decoration: underline;
-    }
+            &:active, 
+            &:visited {
+                color: inherit;
+            }
 
-    // Aktiv sida.
-    .currentPage {
-        text-decoration: none;
+            // För aktuell sida.
+            &.currentPage {
+                text-decoration: none;
+                background-color: rgba($green, 85%);
+                color: $white;
+                font-weight: bold;
+            }
+        }
     }
 }
 
 // Mediaquery för större skärmar.
-@media (min-width: 769px) {
+@media (min-width: 900px) {
 
+    // Header.
     header {
         height: 125px;
         display: flex;
         justify-content: space-between;
-        border-bottom: 2px solid $greige;
+        background-color: rgba($green, 10%);
 
+        // Logotyp.
         img {
             height: 80%;
             width: auto;
             padding: 1rem 0 0 1rem;
         }
 
+        // Navigeringsmeny.
         nav ul {
             border-top: none;
-            padding: 2rem 5rem 0 0;
+            border-bottom: none;
+            padding: 2rem 3rem 0 0;
+            max-width: 100%;
+            background-color: transparent;
+
+            // Länkar i nav.
+            a {
+                text-decoration: none;
+                padding: 3.4rem 2rem;
+                color: inherit;
+
+                &:active, 
+                &:visited {
+                    color: inherit;
+                }
+
+                 // För aktuell sida.
+                &.currentPage {
+                    text-decoration: none;
+                    font-weight: bold;
+                    background-color: rgba($green, 85%);
+                    color: $white;
+                }
+            }
         }
     }
 }

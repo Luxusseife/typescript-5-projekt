@@ -2,19 +2,21 @@
 @import '../../variables';
 
 // Footer.
-footer {
+.footer {
     height: 300px;
-    width: 100%;
+    max-width: 100%;
     background-color: darken($greige, 10%);
     color: $white;
     text-align: left;
     line-height: 1.6;
     padding: 1rem 1rem 1rem 2rem;
-    
+
+    // Ikoner för kontakt.
     .fa-solid {
         padding-right: 0.5rem;
     }
 
+    // Ikoner för sociala medier.
     .fa-brands {
         padding: 1.5rem 1rem 0 0;
         color: $white;
@@ -24,22 +26,27 @@ footer {
         }
     }
 
-    // Logotyp.
+    // Logotyp i footern som ej syns i mobil-läget.
     img {
-        height: 100px;
-        width: auto;
-        padding: 1rem 0 0 1rem;
-        justify-self: center;
+        display: none;
     }
 }
 
 // Mediaquery för större skärmar.
 @media (min-width: 769px) {
 
-    footer {
+    // Footer.
+    .footer {
         position: relative;
 
+        // Logotyp.
         img {
+            display: inline-block;
+            height: 100px;
+            width: auto;
+            padding: 1rem 0 0 1rem;
+            justify-self: center;
+            max-width: 100%;
             position: absolute;
             right: 3rem;
             bottom: 3rem;

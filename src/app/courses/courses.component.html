@@ -7,7 +7,7 @@
     </p>
 </div>
 
-<div class="container">
+<div class="page-container">
     <div class="form">
         <label for="searchInput" id="label-filtrate">Filtrera kurser:</label>
         <br>
@@ -24,58 +24,67 @@
     </div>
 
     <div class="courses-count">
-        <p>Totalt antal kurser: <strong>{{ totalCourses }}</strong></p>
+        <p>Totalt antal kurser: <strong>{{ totalCourses }}.</strong></p>
         <br>
-        <p>Utifrån aktuell filtrering visas: <strong>{{ filteredCourseList.length }}</strong> kurser</p>
+        <p>Utifrån aktuell filtrering visas: <strong>{{ filteredCourseList.length }}</strong> kurser.</p>
     </div>
 
     <!-- Tabell för mobil -->
-    <table class="table-mobile">
-        <thead>
-            <tr>
-                <th id="name" (click)="sortByName()">Kursnamn</th>
-                <th id="points" (click)="sortByPoints()">Poäng</th>
-                <th id="syllabus">Kursplan</th>
-                <th id="save">Spara</th>
-            </tr>
-        </thead>
-        <tbody id="course-info-mobile">
-            <tr *ngFor="let course of filteredCourseList">
-                <td>{{ course.courseName }}</td>
-                <td>{{ course.points }}</td>
-                <td><a href="{{ course.syllabus }}" target="_blank" alt="Länk till kursplan">Kursplan</a></td>
-                <td>
-                    <i class="fa-regular fa-star fa-lg" *ngIf="!course.isStarred" (click)="toggleStar(course)"></i>
-                    <i class="fa-solid fa-star fa-lg" *ngIf="course.isStarred" (click)="toggleStar(course)"></i>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- Tabell för desktop -->
-    <table class="table-desktop">
-        <thead>
-            <tr>
-                <th id="code" (click)="sortByCode()">Kurskod</th>
-                <th id="name" (click)="sortByName()">Kursnamn</th>
-                <th id="points" (click)="sortByPoints()">Poäng</th>
-                <th id="subject" (click)="sortBySubject()">Ämne</th>
-                <th id="syllabus">Kursplan</th>
-                <th id="save">Spara</th>
-            </tr>
-        </thead>
-        <tbody id="course-info">
-            <tr *ngFor="let course of filteredCourseList">
-                <td>{{ course.courseCode.toUpperCase() }}</td>
-                <td>{{ course.courseName }}</td>
-                <td>{{ course.points }}</td>
-                <td>{{ course.subject }}</td>
-                <td><a href="{{ course.syllabus }}" target="_blank" alt="Länk till kursplan">Kursplan</a></td>
-                <td>
-                    <i class="fa-regular fa-star fa-lg" *ngIf="!course.isStarred" (click)="toggleStar(course)"></i>
+    
+        <table class="table-mobile">
+            <thead>
+                <tr>
+                    <th id="name" (click)="sortByName()">Kursnamn</th>
+                    <th id="points" (click)="sortByPoints()">HP</th>
+                    <th id="syllabus">Kursplan</th>
+                    <th id="save">Spara</th>
+                </tr>
+            </thead>
+            <tbody id="course-info-mobile">
+                <tr
+                    *ngFor="let course of filteredCourseList | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+                    <td>{{ course.courseName }}</td>
+                    <td>{{ course.points }}</td>
+                    <td><a href="{{ course.syllabus }}" target="_blank" alt="Länk till kursplan">Kursplan</a></td>
+                    <td>
+                        <i class="fa-regular fa-star fa-lg" *ngIf="!course.isStarred" (click)="toggleStar(course)"></i>
                         <i class="fa-solid fa-star fa-lg" *ngIf="course.isStarred" (click)="toggleStar(course)"></i>
                     </td>
-            </tr>
-        </tbody>
-    </table>
+                </tr>
+            </tbody>
+        </table>
+
+    <!-- Tabell för desktop -->
+    <div class="table-container">
+        <table class="table-desktop">
+            <thead>
+                <tr>
+                    <th id="code" (click)="sortByCode()">Kurskod</th>
+                    <th id="name" (click)="sortByName()">Kursnamn</th>
+                    <th id="points" (click)="sortByPoints()">HP</th>
+                    <th id="subject" (click)="sortBySubject()">Ämne</th>
+                    <th id="syllabus">Kursplan</th>
+                    <th id="save">Spara</th>
+                </tr>
+            </thead>
+            <tbody id="course-info">
+                <tr
+                    *ngFor="let course of filteredCourseList | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+                    <td>{{ course.courseCode.toUpperCase() }}</td>
+                    <td>{{ course.courseName }}</td>
+                    <td>{{ course.points }}</td>
+                    <td>{{ course.subject }}</td>
+                    <td><a href="{{ course.syllabus }}" target="_blank" alt="Länk till kursplan">Kursplan</a></td>
+                    <td>
+                        <i class="fa-regular fa-star fa-lg" *ngIf="!course.isStarred" (click)="toggleStar(course)"></i>
+                        <i class="fa-solid fa-star fa-lg" *ngIf="course.isStarred" (click)="toggleStar(course)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination">
+        <pagination-controls class="my-pagination" (pageChange)="p = $event" previousLabel="Föregående" nextLabel="Nästa"></pagination-controls>
+    </div>
 </div>

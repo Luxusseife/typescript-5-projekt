@@ -3,11 +3,12 @@ import { Course } from '../model/course';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CoursedataService } from '../services/coursedata.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NgxPaginationModule],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss'
 })
@@ -23,6 +24,8 @@ export class CoursesComponent {
   totalCourses: number = 0;
   subjectFilter: string = "";
   isStarred: boolean = false;
+  p: number = 1;
+  itemsPerPage: number = 10;
 
   // Konstruktor.
   constructor(private coursedataService: CoursedataService) { }

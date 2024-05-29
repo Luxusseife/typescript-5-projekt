@@ -10,11 +10,28 @@
 
 // Body.
 body {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
     font: 100% $font-stack;
     background-color: rgba($greige, 5%);
+
+    // Rubriker.
+    h1 {
+        text-align: center;
+        padding-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    h3 {
+        padding-top: 2rem;
+    }
+}
+
+// Mediaquery för större skärmar.
+@media (min-width: 769px) {
+
 
     // Rubriker.
     h1 {
