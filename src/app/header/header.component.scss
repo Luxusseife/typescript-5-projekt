@@ -15,15 +15,14 @@ header {
 
     // Navigeringsmeny.
     nav ul {
+        display: flex;
+        justify-content: space-evenly;
         list-style: none;
-        border-top: 2px solid rgba($green, 75%);
-        border-bottom: 2px solid rgba($green, 75%);
         margin: 1rem 0 2rem 0;
         text-align: center;
-        padding: 0.6rem 0.4rem;
+        padding: 0.9rem 0.4rem;
         max-width: 100%;
-        background-color: rgba($green, 10%);
-        
+        background-color: $greige;
 
         // Li-element i nav.
         li {
@@ -37,7 +36,7 @@ header {
             padding: 0.5rem;
             color: inherit;
 
-            &:active, 
+            &:active,
             &:visited {
                 color: inherit;
             }
@@ -45,11 +44,21 @@ header {
             // För aktuell sida.
             &.currentPage {
                 text-decoration: none;
-                background-color: rgba($green, 85%);
                 color: $white;
                 font-weight: bold;
+                text-shadow: 2px 1px 2px $black;
             }
         }
+    }
+}
+
+// Mediaquery för större skärmar.
+@media (min-width: 426px) {
+
+    header nav ul li {
+        display: inline;
+        font-size: 22px;
+        padding: 0;
     }
 }
 
@@ -61,7 +70,7 @@ header {
         height: 125px;
         display: flex;
         justify-content: space-between;
-        background-color: rgba($green, 10%);
+        background-color: rgba($greige, 10%);
 
         // Logotyp.
         img {
@@ -78,22 +87,26 @@ header {
             max-width: 100%;
             background-color: transparent;
 
+            li {
+                padding: 0;
+            }
+
             // Länkar i nav.
             a {
                 text-decoration: none;
-                padding: 3.4rem 2rem;
+                padding: 3.25rem 2rem;
                 color: inherit;
 
-                &:active, 
+                &:active,
                 &:visited {
                     color: inherit;
                 }
 
-                 // För aktuell sida.
+                // För aktuell sida.
                 &.currentPage {
                     text-decoration: none;
                     font-weight: bold;
-                    background-color: rgba($green, 85%);
+                    background-color: $greige;
                     color: $white;
                 }
             }

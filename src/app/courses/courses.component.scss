@@ -4,7 +4,6 @@
 // Information om sidan.
 .info,
 .courses-count {
-
     p {
         text-align: center;
         margin: 0 2rem;
@@ -36,7 +35,6 @@
 
         // Mediaquery, ändrar inputfältets och selectboxens bredd.
         @media (min-width: 769px) {
-
             #searchInput,
             #subject {
                 width: 25%;
@@ -45,7 +43,6 @@
 
         // Mediaquery, ändrar inputfältets och selectboxens bredd.
         @media (min-width: 1921px) {
-
             #searchInput,
             #subject {
                 width: 15%;
@@ -105,7 +102,7 @@
         }
     }
 
-    // Kurstabell för desktop som ej syns i mobil-läget. 
+    // Kurstabell för desktop som ej syns i mobil-läget.
     .table-desktop {
         display: none;
     }
@@ -120,7 +117,7 @@
     // Aktuell sida i paginering, bakgrundsfärg.
     .my-pagination ::ng-deep .ngx-pagination .current {
         font-weight: bold;
-        border-radius: 10px;
+        border-radius: 20px;
         background: $green;
         color: $white;
     }
@@ -128,7 +125,6 @@
 
 // Mediaquery för större skärmar.
 @media (min-width: 769px) {
-
     // Container för kurs-sidan.
     .page-container {
         margin: 0 auto;
