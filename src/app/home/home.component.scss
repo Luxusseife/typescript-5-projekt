@@ -208,6 +208,7 @@
 @media (min-width: 1025px) {
     .header {
         @include header-styles(650px, 500px, 520px);
+        margin: 0 0 2rem 0;
     }
 
     .div-container .info-box {
