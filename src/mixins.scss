@@ -1,0 +1,207 @@
+// Paginering.
+@mixin pagination {
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto;
+}
+
+@mixin my-pagination {
+    font-weight: bold;
+    border-radius: 20px;
+    background: $green;
+    color: $white;
+}
+
+// Formulär på kurssidan.
+@mixin form {
+    text-align: center;
+    padding: 2rem 0;
+    letter-spacing: 1px;
+
+    label {
+        font-size: 20px;
+    }
+
+    #searchInput,
+    #subject {
+        width: 50%;
+        border: 2px solid $green;
+        border-radius: 5px;
+        padding: 7px 7px;
+        margin: 10px 0 1rem 0;
+    }
+
+    @media (min-width: 769px) {
+
+        #searchInput,
+        #subject {
+            width: 25%;
+        }
+    }
+
+    @media (min-width: 1921px) {
+
+        #searchInput,
+        #subject {
+            width: 15%;
+        }
+    }
+}
+
+// Tabell i mobilvy.
+@mixin table-mobile {
+    margin: 2rem auto;
+    border: 2px solid $green;
+    border-radius: 5px;
+    width: 100%;
+
+    a {
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    th,
+    td {
+        padding: 5px;
+        text-align: left;
+        font-size: 13px;
+        max-width: 175px;
+    }
+
+    thead {
+        background-color: rgba($green, 50%);
+        font-size: 15px;
+        text-shadow: 2px 1px 2px $white;
+
+        #code,
+        #name,
+        #points,
+        #subject {
+            cursor: pointer;
+        }
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba($green, 20%);
+    }
+
+    // Stjärn-ikoner för att spara kurs.
+    .fa-star {
+        cursor: pointer;
+        color: $yellow;
+        padding-left: 0.6rem;
+    }
+
+    .fa-regular {
+        color: $black;
+    }
+}
+
+// Tabell i desktop-vy.
+@mixin table-desktop {
+    display: inline-block;
+    overflow-x: auto;
+    margin: 2rem auto;
+    border: 2px solid $green;
+    border-radius: 5px;
+
+    a {
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    thead {
+        background-color: rgba($green, 50%);
+        text-shadow: 2px 1px 2px $white;
+
+        #code,
+        #name,
+        #points,
+        #subject {
+            cursor: pointer;
+        }
+    }
+
+    #course-info tr td {
+        font-size: 14px;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba($green, 20%);
+    }
+
+    // Stjärn-ikoner för att spara kurs.
+    .fa-star {
+        cursor: pointer;
+        color: $yellow;
+        padding-left: 0.6rem;
+    }
+
+    .fa-regular {
+        color: $black;
+    }
+}
+
+// Header-bild.
+@mixin header-styles($height, $top-h1, $top-p) {
+    width: 100%;
+    height: $height;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 1.2rem 0 2rem 0;
+
+    h1 {
+        display: inline;
+        padding: 0.25rem;
+        margin: 0 0 0 1rem;
+        background-color: rgba($yellow, 55%);
+        color: $white;
+        position: relative;
+        top: $top-h1;
+    }
+
+    p {
+        display: inline-block;
+        padding: 0.25rem;
+        margin: 0 5rem 0 1rem;
+        background-color: rgba($yellow, 55%);
+        text-align: left;
+        font-weight: lighter;
+        color: $white;
+        position: relative;
+        top: $top-p;
+    }
+}
+
+// Knapp.
+@mixin button-styles($background, $color) {
+    width: 100%;
+    background-color: $background;
+    color: $color;
+    padding: 1rem;
+    text-decoration: none;
+    border-top: 3px solid darken($color, 5%);
+    border-bottom: 3px solid darken($color, 5%);
+    border-right: none;
+    border-left: none;
+    margin-bottom: 2rem;
+    font-size: 24px;
+    font-weight: bold;
+
+    .fa-solid {
+        color: $color;
+        padding-left: 1rem;
+        font-size: 24px;
+    }
+
+    .fa-arrow-right {
+        display: inline-block;
+        animation: movingArrow 1s infinite;
+    }
+}

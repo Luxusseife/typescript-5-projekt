@@ -1,41 +1,14 @@
 // Importerar variabler.
-@import '../../variables';
+@import '../../base';
+@import '../../mixins';
 
-// Header.
+// Header
 .header {
-    width: 100%;
-    height: 500px;
+    @include header-styles(500px, 360px, 380px);
     background: url(../../assets/images/header.jpg) no-repeat center center;
-    background-size: cover;
-    background-attachment: fixed;
-    margin: 1.2rem 0 2rem 0;
-
-    // Rubrik i "header-bild".
-    h1 {
-        display: inline;
-        padding: 0.25rem;
-        margin: 0 0 0 1rem;
-        background-color: rgba($yellow, 55%);
-        color: $white;
-        position: relative;
-        top: 360px;
-    }
-
-    // Brödtext i "header-bild".
-    p {
-        display: inline-block;
-        padding: 0.25rem;
-        margin: 0 5rem 0 1rem;
-        background-color: rgba($yellow, 55%);
-        text-align: left;
-        font-weight: lighter;
-        color: $white;
-        position: relative;
-        top: 380px;
-    }
 }
 
-// Statistik.
+// Statistik
 .statistics {
     display: flex;
     justify-content: space-around;
@@ -53,7 +26,7 @@
     font-weight: bold;
 }
 
-// Container för info-rutor.
+// Container för info-rutor
 .div-container {
     display: flex;
     flex-direction: column;
@@ -61,24 +34,20 @@
     max-width: 100%;
     background-color: rgba($yellow, 55%);
 
-    // Rubrik.
     h2 {
         text-align: left;
         padding-left: 1rem;
     }
 
-    // Brödtext.
     p {
         text-align: left;
         padding: 1rem;
     }
 
-    // Länkar (bild och text).
     a {
         text-decoration: none;
     }
 
-    // Informations-rutor. 
     #education,
     #student,
     #courses,
@@ -89,7 +58,6 @@
         color: $black;
         text-align: center;
 
-        // Information, bilder.
         .info {
             width: 100%;
             height: auto;
@@ -97,81 +65,46 @@
     }
 }
 
-// Container för knapp.
+// Container för knapp
 .buttonToCourses {
     margin-top: 2rem;
 
-    // Rubrik.
     h2 {
         text-align: center;
         padding: 0;
     }
 
-    // Knapp.
     .button {
-        width: 100%;
-        background-color: rgba($green, 10%);
-        color: $green;
-        padding: 1rem;
-        text-decoration: none;
-        border-top: 3px solid darken($green, 5%);
-        border-bottom: 3px solid darken($green, 5%);
-        border-right: none;
-        border-left: none;
-        margin-bottom: 2rem;
-        font-size: 24px;
-        font-weight: bold;
-
-        // Ikon.
-        .fa-solid {
-            color: $green;
-            padding-left: 1rem;
-            font-size: 24px;
-        }
-
-        // Animering för ikon.
-        .fa-arrow-right {
-            display: inline-block;
-            animation: movingArrow 1s infinite;
-        }
+        @include button-styles(rgba($green, 10%), $green);
     }
 }
 
-// Ek och citat syns inte.
+// Ek och citat syns inte
 .oak-and-quote {
     display: none;
 }
 
-// Mediaquery för större skärmar, min-bredd 426px.
+// Media queries
 @media (min-width: 426px) {
-
-    // Header-bild.
     .header {
         margin: 1.5rem 0 2rem 0;
     }
 
-    // Container för info-rutor.
     .div-container {
-
-        // Rubrik.
         h2 {
             text-align: center;
             padding-left: 0;
         }
 
-        // Brödtext.
         p {
             text-align: center;
             margin: 0 5rem;
         }
 
-        // Informations-rutor. 
         #education,
         #student,
         #courses,
         #hassleholm {
-
-            // Information, bilder.
             .info {
                 width: 65%;
                 height: auto;
@@ -179,36 +112,27 @@
         }
     }
 
-    // Knapp-container.
     .buttonToCourses {
         display: flex;
         justify-content: center;
 
-        // Knapp.
         .button {
             border: 3px solid darken($green, 5%);
         }
     }
 
-    // Ek och citat syns inte.
     .oak-and-quote {
         display: none;
     }
 }
 
-// Mediaquery för större skärmar, min-bredd 575px.
 @media (min-width: 575px) {
-
-    // Ek och citat syns inte.
     .oak-and-quote {
         display: none;
     }
 }
 
-// Mediaquery för större skärmar, min-bredd 1000px.
 @media (min-width: 769px) {
-
-    // Container för info-rutor.
     .div-container {
         display: flex;
         flex-direction: row;
@@ -219,7 +143,6 @@
         padding: 20px;
         background-color: transparent;
 
-        // Informations-rutor. 
         .info-box {
             color: white;
             width: 500px;
@@ -233,44 +156,37 @@
             box-shadow: 5px 5px 10px $greige;
         }
 
-        // Rubrik.
         h2 {
             font-size: 24px;
         }
 
-        // Brödtext.
         p {
             margin: 0 1rem;
         }
     }
 
-    // Grafiskt element i bakgrunden.
     .oak-and-quote {
         display: flex;
         justify-content: space-around;
         width: 100%;
         height: 300px;
 
-        // Ek.
         #oak {
             opacity: 80%;
         }
 
-        // Citat.
         #quote {
             padding: 2rem;
             margin-top: 5rem;
             text-align: right;
             font: 100% $font-stack-italic;
 
-            // Rubrik.
             h3 {
                 padding: 1rem;
                 font-size: 40px;
                 font-weight: lighter;
             }
 
-            // Brödtext.
             p {
                 font-size: 30px;
                 padding: 1rem;
@@ -279,86 +195,42 @@
     }
 }
 
-// Mediaquery för större skärmar, min-bredd 1000px.
 @media (min-width: 900px) {
     .header {
         margin: 0 0 2rem 0;
     }
 
-    // Container för info-rutor.
-    .div-container {
-
-        // Informations-rutor. 
-        .info-box {
-            width: 400px;
-        }
+    .div-container .info-box {
+        width: 400px;
     }
 }
 
-// Mediaquery för större skärmar, min-bredd 1000px.
 @media (min-width: 1025px) {
-
     .header {
-        width: 100%;
-        height: 650px;
-        margin: 0 0 2rem 0;
-
-        // Rubrik i "header-bild".
-        h1 {
-            display: inline;
-            padding: 0.25rem;
-            margin: 0 0 0 1rem;
-            background-color: rgba($yellow, 65%);
-            color: $white;
-            position: relative;
-            top: 500px;
-        }
-
-        // Brödtext i "header-bild".
-        p {
-            display: inline-block;
-            padding: 0.25rem;
-            margin: 0 5rem 0 1rem;
-            background-color: rgba($yellow, 65%);
-            text-align: left;
-            font-weight: lighter;
-            color: $white;
-            position: relative;
-            top: 520px;
-        }
+        @include header-styles(650px, 500px, 520px);
     }
 
-    // Container för info-rutor.
-    .div-container {
-
-        // Informations-rutor. 
-        .info-box {
-            width: 500px;
-            height: 500px;
-        }
+    .div-container .info-box {
+        width: 500px;
+        height: 500px;
     }
 
-    // Knapp-container.
     .buttonToCourses {
         margin-top: 2rem;
     }
 
-    // Grafiskt element i bakgrunden.
     .oak-and-quote {
         height: 400px;
 
-        // Citat.
         #quote {
             margin-top: 6rem;
 
-            // Rubrik.
             h3 {
                 padding: 1rem;
                 font-size: 50px;
                 font-weight: lighter;
             }
 
-            // Brödtext.
             p {
                 font-size: 40px;
                 padding: 1rem;
@@ -367,25 +239,10 @@
     }
 }
 
-// Mediaquery för större skärmar, min-bredd 1000px.
 @media (min-width: 1920px) {
     .header {
-        width: 100%;
-        height: 900px;
-        background: url(../../assets/images/header.jpg) no-repeat bottom center;
-        background-size: cover;
-        background-attachment: fixed;
-        margin: 0 0 2rem 0;
-
-        // Rubrik i "header-bild".
-        h1 {
-            top: 750px;
-        }
-
-        // Brödtext i "header-bild".
-        p {
-            top: 770px;
-        }
+        @include header-styles(900px, 750px, 770px);
+        background-position: bottom center;
     }
 
     .oak-and-quote {

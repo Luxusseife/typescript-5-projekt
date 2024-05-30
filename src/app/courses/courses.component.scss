@@ -1,7 +1,8 @@
 // Importerar variabler.
-@import '../../variables';
+@import '../../base';
+@import '../../mixins';
 
-// Information om sidan.
+// Informationstext och kursräknare.
 .info,
 .courses-count {
     p {
@@ -15,91 +16,12 @@
 
     // Formulär: filtrering.
     .form {
-        text-align: center;
-        padding: 2rem 0;
-        letter-spacing: 1px;
-
-        label {
-            font-size: 20px;
-        }
-
-        // Default för inputfältets och selectboxens bredd.
-        #searchInput,
-        #subject {
-            width: 50%;
-            border: 2px solid $green;
-            border-radius: 5px;
-            padding: 7px 7px;
-            margin: 10px 0 1rem 0;
-        }
-
-        // Mediaquery, ändrar inputfältets och selectboxens bredd.
-        @media (min-width: 769px) {
-            #searchInput,
-            #subject {
-                width: 25%;
-            }
-        }
-
-        // Mediaquery, ändrar inputfältets och selectboxens bredd.
-        @media (min-width: 1921px) {
-            #searchInput,
-            #subject {
-                width: 15%;
-            }
-        }
+        @include form;
     }
 
     // Kurstabell för mobil/tablet.
     .table-mobile {
-        margin: 2rem auto;
-        border: 2px solid $green;
-        border-radius: 5px;
-        width: 100%;
-
-        // Länkar/kolumnrubriker.
-        a {
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        th,
-        td {
-            padding: 5px;
-            text-align: left;
-            font-size: 13px;
-            max-width: 175px;
-        }
-
-        // Kolumnrubriker.
-        thead {
-            background-color: rgba($green, 50%);
-            font-size: 15px;
-            text-shadow: 2px 1px 2px $white;
-
-            #code,
-            #name,
-            #points,
-            #subject {
-                cursor: pointer;
-            }
-        }
-
-        // Varannan rad blir mörkare.
-        tr:nth-child(even) {
-            background-color: rgba($green, 20%);
-        }
-
-        // Stjärnor för spara.
-        .fa-star {
-            cursor: pointer;
-            color: $yellow;
-            padding-left: 0.6rem;
-        }
-
-        .fa-regular {
-            color: $black;
-        }
+        @include table-mobile;
     }
 
     // Kurstabell för desktop som ej syns i mobil-läget.
@@ -109,25 +31,20 @@
 
     // Paginering.
     .pagination {
-        display: flex;
-        justify-content: center;
-        margin: 1rem auto;
+        @include pagination;
     }
 
     // Aktuell sida i paginering, bakgrundsfärg.
     .my-pagination ::ng-deep .ngx-pagination .current {
-        font-weight: bold;
-        border-radius: 20px;
-        background: $green;
-        color: $white;
+        @include my-pagination;
     }
 }
 
 // Mediaquery för större skärmar.
 @media (min-width: 769px) {
+
     // Container för kurs-sidan.
     .page-container {
-        margin: 0 auto;
 
         // Kurstabell för mobil/tablet som ej syns i desktop-läget.
         .table-mobile {
@@ -141,56 +58,7 @@
 
             // Kurstabell för desktop.
             .table-desktop {
-                display: inline-block;
-                overflow-x: auto;
-                margin: 2rem auto;
-                border: 2px solid $green;
-                border-radius: 5px;
-
-                // Länkar / kolumnrubriker.
-                a {
-                    cursor: pointer;
-                    text-decoration: none;
-                }
-
-                th,
-                td {
-                    padding: 10px;
-                    text-align: left;
-                }
-
-                // Kolumnrubriker.
-                thead {
-                    background-color: rgba($green, 50%);
-                    text-shadow: 2px 1px 2px $white;
-
-                    #code,
-                    #name,
-                    #points,
-                    #subject {
-                        cursor: pointer;
-                    }
-                }
-
-                #course-info tr td {
-                    font-size: 14px;
-                }
-
-                // Varannan rad blir mörkare.
-                tr:nth-child(even) {
-                    background-color: rgba($green, 20%);
-                }
-
-                // Stjärnor för spara.
-                .fa-star {
-                    cursor: pointer;
-                    color: $yellow;
-                    padding-left: 0.6rem;
-                }
-
-                .fa-regular {
-                    color: $black;
-                }
+                @include table-desktop;
             }
         }
 
