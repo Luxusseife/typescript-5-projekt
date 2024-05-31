@@ -1,16 +1,47 @@
-// Brödtext.
+// Importerar variabler.
+@import '../../base';
+@import '../../mixins';
+
+// Informationstext.
 p {
     text-align: center;
-    margin: 3rem 0 3rem 0;
-    font-weight: bold;
+    margin: 0 2rem;
+    line-height: 1.6;
 }
 
 // Mobil-tabell visas.
 .table-mobile {
+    @include table-mobile;
     display: block;
 }
 
 // Desktop-tabell visas inte.
 .table-container {
     display: none;
+}
+
+// Mediaquery för större skärmar.
+@media (min-width: 769px) {
+
+    // Kurstabell för mobil/tablet som ej syns i desktop-läget.
+    .table-mobile {
+        display: none;
+    }
+
+    // Tabell-container.
+    .table-container {
+        display: flex;
+        justify-content: center;
+
+        // Kurstabell för desktop.
+        .table-desktop {
+            @include table-desktop;
+        }
+    }
+
+    // Brödtext.
+    p {
+        text-align: center;
+        margin: 0 2rem;
+    }
 }

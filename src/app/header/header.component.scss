@@ -89,6 +89,10 @@ header {
 
             li {
                 padding: 0;
+
+                &:hover a:not(.currentPage){
+                    text-decoration: underline;
+                }
             }
 
             // Länkar i nav.

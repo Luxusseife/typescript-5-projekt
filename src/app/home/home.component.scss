@@ -4,7 +4,7 @@
 
 // Header-bild.
 .header {
-    @include header-styles(500px, 360px, 380px);
+    @include header-styles(500px, 340px, 360px);
     background: url(../../assets/images/header.jpg) no-repeat center center;
 }
 
@@ -57,6 +57,10 @@
         color: $black;
         text-align: center;
 
+        &:hover h2 {
+            text-decoration: underline;
+        }
+
         .info {
             width: 100%;
             height: auto;
@@ -75,6 +79,10 @@
 
     .button {
         @include button-styles(rgba($green, 10%), $green);
+
+        &:hover {
+            background-color: rgba($green, 30%);
+        }
     }
 }
 
@@ -86,6 +94,7 @@
 // Media queries för startsidan.
 @media (min-width: 426px) {
     .header {
+        @include header-styles(500px, 380px, 400px);
         margin: 1.5rem 0 2rem 0;
     }
 
@@ -117,6 +126,10 @@
 
         .button {
             border: 3px solid darken($green, 5%);
+
+            &:hover {
+                border: 3px solid darken($green, 15%);
+            }
         }
     }
 
@@ -153,6 +166,10 @@
             background-color: rgba($yellow, 55%);
             line-height: 1.6;
             box-shadow: 5px 5px 10px $greige;
+
+            &:hover {
+                opacity: 75%;
+            }
         }
 
         h2 {
@@ -197,6 +214,10 @@
 @media (min-width: 900px) {
     .header {
         margin: 0 0 2rem 0;
+
+        h1, p {
+            margin: 0 0 0 1.5rem;
+        }
     }
 
     .div-container .info-box {
