@@ -1,3 +1,66 @@
 <h1>Ramschema</h1>
 
-<p>Här hittar du ditt individuella ramschema. För tillfället finns inga kurser sparade...</p>
+<div class="info">
+    <p>
+        Här visas de kurser du sparat i ett ramschema. alla våra tillgängliga och sökbara kurser. Du har möjlighet att skapa ditt egenkomponerade ramschema
+        genom att spara de kurser du är intresserad av.
+    </p>
+</div>
+
+<div *ngIf="savedCourses.length === 0">
+    <p>Inga kurser har sparats.</p>
+  </div>
+
+<div *ngIf="savedCourses.length > 0" class="page-container">
+
+    <!-- Tabell för mobil -->
+    <table class="table-mobile">
+        <thead>
+            <tr>
+                <th id="name">Kursnamn</th>
+                <th id="points">HP</th>
+                <th id="syllabus">Kursplan</th>
+                <th id="save">Spara</th>
+            </tr>
+        </thead>
+        <tbody id="course-info-mobile">
+            <tr *ngFor="let course of savedCourses">
+                <td>{{ course.courseName }}</td>
+                <td>{{ course.points }}</td>
+                <td><a href="{{ course.syllabus }}" target="_blank" alt="Länk till kursplan">Kursplan</a></td>
+                <td>
+                    <i class="fa-solid fa-trash-can fa-lg"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Tabell för desktop -->
+    <div class="table-container">
+        <table class="table-desktop">
+            <thead>
+                <tr>
+                    <th id="code">Kurskod</th>
+                    <th id="name">Kursnamn</th>
+                    <th id="points">HP</th>
+                    <th id="subject">Ämne</th>
+                    <th id="syllabus">Kursplan</th>
+                    <th id="save">Spara</th>
+                </tr>
+            </thead>
+            <tbody id="course-info">
+                <tr
+                    *ngFor="let course of savedCourses">
+                    <td>{{ course.courseCode.toUpperCase() }}</td>
+                    <td>{{ course.courseName }}</td>
+                    <td>{{ course.points }}</td>
+                    <td>{{ course.subject }}</td>
+                    <td><a href="{{ course.syllabus }}" target="_blank" alt="Länk till kursplan">Kursplan</a></td>
+                    <td>
+                        <i class="fa-solid fa-trash-can fa-lg"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

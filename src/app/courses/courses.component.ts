@@ -1,20 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Course } from '../model/course';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CoursedataService } from '../services/coursedata.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ScheduleService } from '../services/schedule.service';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
   imports: [CommonModule, FormsModule, NgxPaginationModule],
   templateUrl: './courses.component.html',
-  styleUrl: './courses.component.scss'
+  styleUrls: ['./courses.component.scss']
 })
-export class CoursesComponent {
+export class CoursesComponent implements OnInit {
   
-  // Egenskaper för listor och filter.
+  // Egenskaper för listor, filter, paginering och kursräknare.
   courseList: Course[] = [];
   filteredCourseList: Course[] = [];
   filterValue: string = "";
@@ -23,18 +24,22 @@ export class CoursesComponent {
   courses: Course[] = [];
   totalCourses: number = 0;
   subjectFilter: string = "";
-  isStarred: boolean = false;
   p: number = 1;
   itemsPerPage: number = 10;
 
   // Konstruktor.
-  constructor(private coursedataService: CoursedataService) { }
-
+  constructor(private coursedataService: CoursedataService, private scheduleService: ScheduleService) {}
+  
   // Initialisering och hämtning av kursdata.
   ngOnInit() {
     this.coursedataService.getCourses().subscribe(data => {
-      this.courseList = data.map(course => ({ ...course, isStarred: false }));
-      this.filteredCourseList = data;
+      // Kollar om kurserna redan är sparade i localStorage.
+      const savedCourses = this.scheduleService.getCourses();
+      this.courseList = data.map(course => ({
+        ...course,
+        isStarred: !!savedCourses.find(savedCourse => savedCourse.courseCode === course.courseCode)
+      }));
+      this.filteredCourseList = [...this.courseList];
       this.extractSubjects(data);
       this.courses = data;
       this.totalCourses = this.courses.length;
@@ -101,8 +106,11 @@ export class CoursesComponent {
     this.ascending = !this.ascending;
   }
 
-  // Växla status (sparad favorit, ej sparad favorit) för en kurs.
+  // Växlar status (sparad favorit) för en kurs.
   toggleStar(course: Course): void {
-    course.isStarred = !course.isStarred;
+    if (!course.isStarred) {
+      course.isStarred = true;
+      this.scheduleService.addCourse(course);
+    }
   }
 }

@@ -4,3 +4,13 @@ p {
     margin: 3rem 0 3rem 0;
     font-weight: bold;
 }
+
+// Mobil-tabell visas.
+.table-mobile {
+    display: block;
+}
+
+// Desktop-tabell visas inte.
+.table-container {
+    display: none;
+}
