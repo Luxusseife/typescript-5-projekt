@@ -5,7 +5,7 @@
 // Info.
 .info-mobile {
     text-align: center;
-    margin: 0 auto 2rem auto;
+    margin: 0 1rem 2rem 1rem;
     max-width: 55ch;
     line-height: 1.6;
 }
@@ -18,6 +18,16 @@
 // Ek och citat syns inte.
 .oak-and-quote {
     display: none;
+}
+
+// Media queries för större skärmar, 769px och uppåt.
+@media (min-width: 426px) {
+
+    .info-mobile {
+
+        margin: 0 auto 2rem auto;
+
+    }
 }
 
 // Media queries för större skärmar, 769px och uppåt.
