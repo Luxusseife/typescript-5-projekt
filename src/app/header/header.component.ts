@@ -9,5 +9,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  // Egenskap för att hålla en bildväg.
   logo: string = "assets/images/logoLight.png";
 }

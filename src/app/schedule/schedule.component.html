@@ -2,14 +2,15 @@
 
 <div class="info">
     <p>
-        Här visas de kurser du sparat i ett individuellt ramschema. Du kan se totala antalet kurser och poäng under ramschemat. 
-        Önskar du radera en kurs klickar du på <i class="fa-regular fa-trash-can fa-lg"></i>.
+        Här visas de kurser du sparat i ett individuellt ramschema. Du kan se antalet kurser och totala poäng under
+        ramschemat.
+        Önskar du radera en kurs klickar du på <i class="fa-solid fa-trash-can fa-lg"></i>-ikonen.
     </p>
 </div>
 
-<div *ngIf="savedCourses.length === 0">
+<div *ngIf="savedCourses.length === 0" class="info-empty">
     <p>Inga kurser har sparats.</p>
-  </div>
+</div>
 
 <div *ngIf="savedCourses.length > 0" class="page-container">
 
@@ -20,7 +21,7 @@
                 <th id="name">Kursnamn</th>
                 <th id="points">HP</th>
                 <th id="syllabus">Kursplan</th>
-                <th id="save">Spara</th>
+                <th id="save">Radera</th>
             </tr>
         </thead>
         <tbody id="course-info-mobile">
@@ -29,7 +30,7 @@
                 <td>{{ course.points }}</td>
                 <td><a href="{{ course.syllabus }}" target="_blank" alt="Länk till kursplan">Kursplan</a></td>
                 <td>
-                    <i class="fa-regular fa-trash-can fa-lg"></i>
+                    <i class="fa-solid fa-trash-can fa-lg" (click)="removeCourse(course.courseCode)"></i>
                 </td>
             </tr>
         </tbody>
@@ -45,22 +46,34 @@
                     <th id="points">HP</th>
                     <th id="subject">Ämne</th>
                     <th id="syllabus">Kursplan</th>
-                    <th id="save">Spara</th>
+                    <th id="save">Radera</th>
                 </tr>
             </thead>
             <tbody id="course-info">
-                <tr
-                    *ngFor="let course of savedCourses">
+                <tr *ngFor="let course of savedCourses">
                     <td>{{ course.courseCode.toUpperCase() }}</td>
                     <td>{{ course.courseName }}</td>
                     <td>{{ course.points }}</td>
                     <td>{{ course.subject }}</td>
                     <td><a href="{{ course.syllabus }}" target="_blank" alt="Länk till kursplan">Kursplan</a></td>
                     <td>
-                        <i class="fa-regular fa-trash-can fa-lg"></i>
+                        <i class="fa-solid fa-trash-can fa-lg" (click)="removeCourse(course.courseCode)"></i>
                     </td>
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+<div *ngIf="savedCourses.length > 0" class="points-count">
+    <p>Ramschemat innehåller <strong>{{ savedCourses.length }}</strong> kurser med totalt <strong>{{ totalPoints
+            }}</strong> poäng.</p>
+</div>
+
+<div class="oak-and-quote">
+    <img id="oak" [src]="image" alt="En ek">
+    <div id="quote">
+        <h3>"Det verkar alltid vara omöjligt tills det är gjort."</h3>
+        <p>- Zahra Hamadi, tidigare student</p>
     </div>
 </div>

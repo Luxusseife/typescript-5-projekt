@@ -15,11 +15,12 @@
     display: none;
 }
 
-// Ek och citat syns inte
+// Ek och citat syns inte.
 .oak-and-quote {
     display: none;
 }
 
+// Media queries för större skärmar, 769px och uppåt.
 @media (min-width: 769px) {
 
     // Info.
@@ -36,6 +37,7 @@
         line-height: 1.6;
     }
 
+    // Ek och citat.
     .oak-and-quote {
         display: flex;
         justify-content: space-around;
@@ -67,6 +69,7 @@
     }
 }
 
+// Media queries för större skärmar, 1025px och uppåt.
 @media (min-width: 1025px) {
 
     .oak-and-quote {
@@ -89,6 +92,7 @@
     }
 }
 
+// Media queries för större skärmar, 1920px och uppåt.
 @media (min-width: 1920px) {
     .oak-and-quote {
         height: 600px;

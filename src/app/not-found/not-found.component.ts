@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './not-found.component.scss'
 })
 export class NotFoundComponent {
+  // Egenskap för att hålla en bildväg.
   image: string = "assets/images/oak.png";
 }

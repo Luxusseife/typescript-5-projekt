@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  // Egenskaper för att hålla en bildväg.
   image1: string = "assets/images/education.jpg";
   image2: string = "assets/images/students.jpg";
   image3: string = "assets/images/webdesign.jpg";

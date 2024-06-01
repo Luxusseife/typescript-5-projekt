@@ -3,14 +3,9 @@
 @import '../../mixins';
 
 // Header-bild.
-.header {
-    @include header-styles(500px, 340px, 360px);
-    background: url(../../assets/images/header.jpg) no-repeat center center;
-}
-
-// Statistik för skolan.
-.statistics {
-    @include statistics;
+.hero {
+    @include hero-styles(500px, 340px, 360px);
+    background: url(../../assets/images/hero.jpg) no-repeat center center;
 }
 
 // Container för info-rutor.
@@ -20,10 +15,12 @@
     justify-content: space-evenly;
     max-width: 100%;
     background-color: rgba($yellow, 55%);
+    margin-bottom: 3rem;
 
-    h2 {
+    h3 {
         text-align: left;
-        padding-left: 1rem;
+        padding: 1rem 1rem 0rem 1rem;
+        font-size: 1.5em;
     }
 
     p {
@@ -56,22 +53,14 @@
     }
 }
 
-// Container för knapp.
-.buttonToCourses {
-    margin-top: 2rem;
+// Statistik och knapp till kurser.
+.stat-button-mobile {
+    @include stat-button;
+}
 
-    h2 {
-        text-align: center;
-        padding: 0;
-    }
-
-    .button {
-        @include button-styles(rgba($green, 10%), $green);
-
-        &:hover {
-            background-color: rgba($green, 30%);
-        }
-    }
+// Statistik och knapp till kurser för desktopvy, syns inte.
+.stat-button-desktop {
+    display: none;
 }
 
 // Ek och citat syns inte längst ner på sidan.
@@ -79,44 +68,63 @@
     display: none;
 }
 
-// Media queries för startsidan.
+// Media queries för större skärmar, 426px och uppåt.
 @media (min-width: 426px) {
-    .header {
-        @include header-styles(500px, 380px, 400px);
+    .hero {
+        @include hero-styles(500px, 380px, 400px);
         margin: 1.5rem 0 2rem 0;
     }
 
     .div-container {
-        h2 {
+        background-color: transparent;
+        margin: 0 1rem 3rem 1rem;
+
+        h3 {
             text-align: center;
             padding-left: 0;
         }
 
         p {
             text-align: center;
-            margin: 0 5rem;
+            margin: 0 2rem;
         }
 
         #education,
         #student,
         #courses,
         #hassleholm {
+            padding-top: 1rem;
+            background-color: rgba($yellow, 55%);
+            box-shadow: 5px 5px 10px $greige;
+
             .info {
+
                 width: 65%;
                 height: auto;
             }
         }
     }
 
-    .buttonToCourses {
-        display: flex;
-        justify-content: center;
+    // Statistik och knapp till kurser för mobil syns inte i desktopvy.
+    .stat-button-mobile {
+        display: none;
+    }
 
-        .button {
-            border: 3px solid darken($green, 5%);
+    // Statistik och knapp till kurser.
+    .stat-button-desktop {
+        display: block;
+        @include stat-button;
 
-            &:hover {
-                border: 3px solid darken($green, 15%);
+        .buttonToCourses {
+            display: flex;
+            justify-content: center;
+
+            .button {
+                border: 3px solid darken($green, 5%);
+
+                &:hover {
+                    border: 3px solid darken($green, 15%);
+                }
             }
         }
     }
@@ -126,15 +134,30 @@
     }
 }
 
+// Media queries för större skärmar, 575px och uppåt.
 @media (min-width: 575px) {
+
+    .div-container {
+        margin: 0 4rem 5rem 4rem;
+    }
+
     .oak-and-quote {
         display: none;
     }
 }
 
+// Media queries för större skärmar, 769px och uppåt.
 @media (min-width: 769px) {
     .div-container {
         @include div-and-info;
+
+        #education,
+        #student,
+        #courses,
+        #hassleholm {
+            background-color: transparent;
+            box-shadow: none;
+        }
     }
 
     .oak-and-quote {
@@ -167,11 +190,13 @@
     }
 }
 
+// Media queries för större skärmar, 900px och uppåt.
 @media (min-width: 900px) {
-    .header {
+    .hero {
         margin: 0 0 2rem 0;
 
-        h1, p {
+        h1,
+        p {
             margin: 0 0 0 1.5rem;
         }
     }
@@ -181,9 +206,10 @@
     }
 }
 
+// Media queries för större skärmar, 1025px och uppåt.
 @media (min-width: 1025px) {
-    .header {
-        @include header-styles(650px, 500px, 520px);
+    .hero {
+        @include hero-styles(650px, 500px, 520px);
         margin: 0 0 2rem 0;
     }
 
@@ -216,10 +242,12 @@
     }
 }
 
+// Media queries för större skärmar, 1920px och uppåt.
 @media (min-width: 1920px) {
-    .header {
-        @include header-styles(900px, 750px, 770px);
+    .hero {
+        @include hero-styles(900px, 750px, 770px);
         background-position: bottom center;
+        margin: 0 0 2rem 0;
     }
 
     .oak-and-quote {

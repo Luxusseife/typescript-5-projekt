@@ -5,6 +5,7 @@
 header {
     height: 150px;
     width: 100%;
+    background-color: rgba($greige, 5%);
 
     // Logotyp.
     img {
@@ -22,7 +23,7 @@ header {
         text-align: center;
         padding: 0.9rem 0.4rem;
         max-width: 100%;
-        background-color: $greige;
+        background-color: $green;
 
         // Li-element i nav.
         li {
@@ -52,7 +53,7 @@ header {
     }
 }
 
-// Mediaquery för större skärmar.
+// Mediaquery för större skärmar, 426px och uppåt.
 @media (min-width: 426px) {
 
     header nav ul li {
@@ -62,7 +63,7 @@ header {
     }
 }
 
-// Mediaquery för större skärmar.
+// Mediaquery för större skärmar, 900px och uppåt.
 @media (min-width: 900px) {
 
     // Header.
@@ -70,7 +71,7 @@ header {
         height: 125px;
         display: flex;
         justify-content: space-between;
-        background-color: rgba($greige, 10%);
+        background-color: rgba($greige, 5%);
 
         // Logotyp.
         img {
@@ -81,8 +82,6 @@ header {
 
         // Navigeringsmeny.
         nav ul {
-            border-top: none;
-            border-bottom: none;
             padding: 2rem 3rem 0 0;
             max-width: 100%;
             background-color: transparent;
@@ -90,6 +89,7 @@ header {
             li {
                 padding: 0;
 
+                // Hover-effekt endast för inaktuella sidor.
                 &:hover a:not(.currentPage){
                     text-decoration: underline;
                 }
@@ -108,9 +108,7 @@ header {
 
                 // För aktuell sida.
                 &.currentPage {
-                    text-decoration: none;
-                    font-weight: bold;
-                    background-color: $greige;
+                    background-color: $green;
                     color: $white;
                 }
             }

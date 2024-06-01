@@ -2,9 +2,9 @@
 
 <div class="info">
     <p>
-        Här visas alla våra sökbara kurser. Du har möjlighet att skapa ditt egenkomponerade 
+        Här visas alla våra sökbara kurser. Du har möjlighet att skapa ett individuellt
         <a href="/schedule">ramschema</a>
-        genom att trycka på <i class="fa-regular fa-star fa-lg"></i> och spara de kurser du är intresserad av.
+        genom att trycka på <i class="fa-regular fa-star fa-lg"></i>-ikonen och spara de kurser du är intresserad av.
     </p>
 </div>
 
@@ -12,48 +12,42 @@
     <div class="form">
         <label for="searchInput" id="label-filtrate">Filtrera kurser:</label>
         <br>
-        <input type="text" id="searchInput" placeholder="Skriv kurskod eller kursnamn" [(ngModel)]="filterValue"
-            (input)="applyFilter()">
+        <input type="text" id="searchInput" placeholder="Skriv kurskod eller kursnamn" [(ngModel)]="filterValue" (input)="applyFilter()">
         <br>
         <label for="subject" id="label-subject">Filtrera på ämne:</label>
         <br>
-        <select name="subject" id="subject" [(ngModel)]="subjectFilter"
-            (change)="filterCoursesBySubject(subjectFilter)">
+        <select name="subject" id="subject" [(ngModel)]="subjectFilter" (change)="filterCoursesBySubject(subjectFilter)">
             <option value="">Alla ämnen</option>
             <option *ngFor="let subject of subjects" [value]="subject">{{ subject }}</option>
         </select>
     </div>
 
     <div class="courses-count">
-        <p>Totalt antal kurser: <strong>{{ totalCourses }}.</strong></p>
-        <br>
-        <p>Utifrån aktuell filtrering visas: <strong>{{ filteredCourseList.length }}</strong> kurser.</p>
+        <p>Nu visas <strong>{{ filteredCourseList.length }}</strong> av totalt <strong>{{ totalCourses }} kurser.</strong></p>
     </div>
 
     <!-- Tabell för mobil -->
-    
-        <table class="table-mobile">
-            <thead>
-                <tr>
-                    <th id="name" (click)="sortByName()">Kursnamn</th>
-                    <th id="points" (click)="sortByPoints()">HP</th>
-                    <th id="syllabus">Kursplan</th>
-                    <th id="save">Spara</th>
-                </tr>
-            </thead>
-            <tbody id="course-info-mobile">
-                <tr
-                    *ngFor="let course of filteredCourseList | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
-                    <td>{{ course.courseName }}</td>
-                    <td>{{ course.points }}</td>
-                    <td><a href="{{ course.syllabus }}" target="_blank" alt="Länk till kursplan">Kursplan</a></td>
-                    <td>
-                        <i class="fa-regular fa-star fa-lg" *ngIf="!course.isStarred" (click)="toggleStar(course)"></i>
-                        <i class="fa-solid fa-star fa-lg" *ngIf="course.isStarred" (click)="toggleStar(course)"></i>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <table class="table-mobile">
+        <thead>
+            <tr>
+                <th id="name" (click)="sortByName()">Kursnamn</th>
+                <th id="points" (click)="sortByPoints()">HP</th>
+                <th id="syllabus">Kursplan</th>
+                <th id="save">Spara</th>
+            </tr>
+        </thead>
+        <tbody id="course-info-mobile">
+            <tr *ngFor="let course of filteredCourseList | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+                <td>{{ course.courseName }}</td>
+                <td>{{ course.points }}</td>
+                <td><a href="{{ course.syllabus }}" target="_blank" alt="Länk till kursplan">Kursplan</a></td>
+                <td>
+                    <i class="fa-regular fa-star fa-lg" *ngIf="!course.isStarred" (click)="toggleStar(course)"></i>
+                    <i class="fa-solid fa-star fa-lg" *ngIf="course.isStarred" (click)="toggleStar(course)"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
     <!-- Tabell för desktop -->
     <div class="table-container">
@@ -69,8 +63,7 @@
                 </tr>
             </thead>
             <tbody id="course-info">
-                <tr
-                    *ngFor="let course of filteredCourseList | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+                <tr *ngFor="let course of filteredCourseList | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
                     <td>{{ course.courseCode.toUpperCase() }}</td>
                     <td>{{ course.courseName }}</td>
                     <td>{{ course.points }}</td>
@@ -87,5 +80,13 @@
 
     <div class="pagination">
         <pagination-controls class="my-pagination" (pageChange)="p = $event" previousLabel="Föregående" nextLabel="Nästa"></pagination-controls>
+    </div>
+</div>
+
+<div class="oak-and-quote">
+    <img id="oak" [src]="image" alt="En ek">
+    <div id="quote">
+        <h3>"Bra påbörjat är hälften gjort."</h3>
+        <p>- David Jovius, kurslärare</p>
     </div>
 </div>
