@@ -5,7 +5,7 @@
 // Header-bild.
 .hero {
     @include hero-styles(500px, 340px, 360px);
-    background: url(../../assets/images/hero.jpg) no-repeat center center;
+    background: url(../../assets/images/hero.webp) no-repeat center center;
 }
 
 // Container för info-rutor.

@@ -9,9 +9,9 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   // Egenskaper för att hålla en bildväg.
-  image1: string = "assets/images/education.jpg";
-  image2: string = "assets/images/students.jpg";
-  image3: string = "assets/images/webdesign.jpg";
-  image4: string = "assets/images/hassleholm.jpg";
+  image1: string = "assets/images/education.webp";
+  image2: string = "assets/images/students.webp";
+  image3: string = "assets/images/webdesign.webp";
+  image4: string = "assets/images/hassleholm.webp";
   image5: string = "assets/images/oak.png";
 }
